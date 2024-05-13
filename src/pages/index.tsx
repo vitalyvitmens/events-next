@@ -1,30 +1,6 @@
-import { Inter } from 'next/font/google'
-import { prisma } from '@/server/db'
-import { useEffect, useState } from 'react'
+import { trpc } from '@/shared/api'
 
 export default function Home() {
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch('http://localhost:3000/api/hello')
-      const data = await response.json()
-
-      setData(data)
-    }
-
-    getData()
-  }, [])
-
-  return <pre>{JSON.stringify(data, null, 2)}</pre>
-}
-
-export const getServerSideProps = async () => {
-  const users = await prisma.user.findMany()
-
-  return {
-    props: {
-      data: users,
-    },
-  }
+  const { data } = trpc.hello.useQuery({ name: 'Name 77' })
+  return <pre>{data?.greeting}</pre>
 }
