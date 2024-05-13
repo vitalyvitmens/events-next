@@ -29,3 +29,7 @@
 
 ### https://trpc.io/docs/client/nextjs/ssr
 ### npm i superjson
+
+### npm install @tailwindcss/forms
+
+### npm i react-hook-form

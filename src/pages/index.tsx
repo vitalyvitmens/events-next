@@ -1,11 +1,15 @@
+import { EventCard } from '@/entities/event'
 import { trpc } from '@/shared/api'
 
 export default function Home() {
-  const { data } = trpc.hello.useQuery({ name: 'Name 77' })
+  const { data } = trpc.event.findMany.useQuery()
   return (
-    <pre>
-      {data?.greeting},{' '}
-      {data?.date.toISOString().slice(0, 10).replaceAll('-', '.')}
-    </pre>
+    <ul>
+      {data?.map((event) => (
+        <li key={event.id}>
+          <EventCard {...event} />
+        </li>
+      ))}
+    </ul>
   )
 }
