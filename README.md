@@ -27,4 +27,5 @@
 ### npm install @trpc/server@next @trpc/client@next @trpc/react-query@next @trpc/next@next @tanstack/react-query@latest zod
 ### tsconfig.json => "strict": true,
 
-
+### https://trpc.io/docs/client/nextjs/ssr
+### npm i superjson
