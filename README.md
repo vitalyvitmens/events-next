@@ -16,3 +16,7 @@
 
 ### Наполняем сущностями файл prisma\schema.prisma
 ### npx prisma migrate dev
+### Для взаимодействия с базой данных из браузера:
+- npx prisma studio
+
+
