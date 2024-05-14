@@ -36,4 +36,9 @@
 
 ### npm i react-hook-form
 
+### https://react-hook-form.com/get-started#SchemaValidation
 ### npm install @hookform/resolvers --legacy-peer-deps
+
+### https://next-auth.js.org/getting-started/example
+### npm install next-auth --legacy-peer-deps
+### https://next-auth.js.org/providers/credentials
