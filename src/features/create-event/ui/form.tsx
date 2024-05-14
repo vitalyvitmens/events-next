@@ -1,13 +1,19 @@
 import { useForm } from 'react-hook-form'
+import { CreateEventSchema } from '@/shared/api'
+import { z } from 'zod'
 
-export const CreateEventForm = () => {
+export type CreateEventValues = z.infer<typeof CreateEventSchema>
+
+type CreateEventFormProps = {
+  onSubmit: (data: CreateEventValues) => void
+}
+
+export const CreateEventForm = ({ onSubmit }: CreateEventFormProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
-
-  const onSubmit = (data: any) => console.log(data)
+  } = useForm<CreateEventValues>()
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

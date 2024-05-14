@@ -17,6 +17,8 @@ export const EventCard = ({ id, title, description, date }: EventCardProps) => {
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
           fill
+          sizes="(min-width: 75em) 33vw, (min-width: 48em) 50vw, 100vw"
+          priority
         />
       </div>
       <div className="flex-auto p-6">
@@ -38,7 +40,7 @@ export const EventCard = ({ id, title, description, date }: EventCardProps) => {
             </button>
             <Link
               href={`/event/${id}`}
-              className="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900 align-middle leading-7"
+              className="h-10 px-6 font-semibold rounded-md border border-slate-200 text-slate-900 align-middle leading-10"
             >
               Подробнее
             </Link>

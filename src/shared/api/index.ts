@@ -57,3 +57,5 @@ export const trpc = createTRPCNext<AppRouter>({
   },
   transformer: superjson,
 })
+
+export * from './schema'
