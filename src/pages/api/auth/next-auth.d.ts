@@ -9,6 +9,10 @@ declare module 'next-auth' {
   }
 
   interface Session {
-    user: DbUser
+    user: {
+      id: number
+      name: string
+      email: string
+    }
   }
 }

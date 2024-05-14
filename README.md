@@ -42,3 +42,6 @@
 ### https://next-auth.js.org/getting-started/example
 ### npm install next-auth --legacy-peer-deps
 ### https://next-auth.js.org/providers/credentials
+
+### https://trpc.io/docs/server/context
+### https://trpc.io/docs/server/middlewares
