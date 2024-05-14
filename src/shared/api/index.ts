@@ -18,8 +18,8 @@ function getBaseUrl() {
 }
 
 export const trpc = createTRPCNext<AppRouter>({
-  ssr: true,
-  ssrPrepass,
+  ssr: false,
+  // ssrPrepass,
   config(opts) {
     const { ctx } = opts
     if (typeof window !== 'undefined') {

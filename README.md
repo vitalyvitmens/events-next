@@ -1,3 +1,5 @@
+# npm install --legacy-peer-deps
+
 ### npm create next-app events-next
 
 ### TS, ESLint, Tailwind CSS, src/ directory = Yes
@@ -33,3 +35,5 @@
 ### npm install @tailwindcss/forms
 
 ### npm i react-hook-form
+
+### npm install @hookform/resolvers --legacy-peer-deps

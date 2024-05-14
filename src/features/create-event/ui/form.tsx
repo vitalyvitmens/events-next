@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { CreateEventSchema } from '@/shared/api'
 import { z } from 'zod'
 
@@ -13,7 +14,9 @@ export const CreateEventForm = ({ onSubmit }: CreateEventFormProps) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<CreateEventValues>()
+  } = useForm<CreateEventValues>({
+    resolver: zodResolver(CreateEventSchema),
+  })
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -45,6 +48,9 @@ export const CreateEventForm = ({ onSubmit }: CreateEventFormProps) => {
                   />
                 </div>
               </div>
+              <p className="mt-3 text-sm leading-6 text-gray-600">
+                {errors.title?.message}
+              </p>
             </div>
 
             <div className="col-span-full">
