@@ -9,7 +9,7 @@ export default function CreateEvent() {
   }
 
   return (
-    <div className="mx-auto max-w-4xl">
+    <div className="mx-auto my-4 max-w-4xl">
       <CreateEventForm onSubmit={handleSubmit} />
     </div>
   )

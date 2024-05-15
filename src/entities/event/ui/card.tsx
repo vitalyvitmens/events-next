@@ -10,12 +10,12 @@ type EventCardProps = {
 
 export const EventCard = ({ id, title, description, date }: EventCardProps) => {
   return (
-    <div className="flex font-sans shadow-xl">
+    <div className="flex mx-auto max-w-4xl font-sans shadow-xl mt-2 rounded-md">
       <div className="flex-none w-48 relative">
         <Image
           src="/poster.png"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover rounded-l-md"
           fill
           sizes="(min-width: 75em) 33vw, (min-width: 48em) 50vw, 100vw"
           priority
