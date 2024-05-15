@@ -7,6 +7,7 @@ export const eventRouter = router({
   findMany: procedure.query(() => {
     return prisma.event.findMany()
   }),
+
   findUnique: procedure
     .input(
       z.object({
@@ -16,13 +17,21 @@ export const eventRouter = router({
     .query(({ input }) => {
       return prisma.event.findUnique({
         where: input,
-        include: {
+        select: {
+          title: true,
+          description: true,
+          date: true,
           participations: {
-            include: { user: true },
+            select: {
+              user: {
+                select: { name: true },
+              },
+            },
           },
         },
       })
     }),
+
   create: procedure
     .input(CreateEventSchema)
     .use(isAuth)
@@ -34,6 +43,7 @@ export const eventRouter = router({
         },
       })
     }),
+
   join: procedure
     .input(JoinEventSchema)
     .use(isAuth)

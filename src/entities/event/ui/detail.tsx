@@ -9,7 +9,7 @@ export const EventDetail = ({
   participations,
 }: EventDetailProps) => {
   return (
-    <div className='mx-auto max-w-4xl'>
+    <div>
       <div className="px-4 sm:px-0">
         <h3 className="text-base font-semibold leading-7 text-gray-900">
           Информация о событии
