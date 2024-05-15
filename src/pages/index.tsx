@@ -1,4 +1,5 @@
 import { EventCard } from '@/entities/event'
+import { JoinEventButton } from '@/features/join-event'
 import { trpc } from '@/shared/api'
 
 export default function Home() {
@@ -7,7 +8,10 @@ export default function Home() {
     <ul>
       {data?.map((event) => (
         <li key={event.id}>
-          <EventCard {...event} />
+          <EventCard
+            {...event}
+            action={<JoinEventButton eventId={event.id} />}
+          />
         </li>
       ))}
     </ul>
