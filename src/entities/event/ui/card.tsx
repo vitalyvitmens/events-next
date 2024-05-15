@@ -18,11 +18,11 @@ export const EventCard = ({
   action,
 }: EventCardProps) => {
   return (
-    <div className="flex font-sans shadow-xl mt-2 rounded-md">
+    <div className="flex font-sans shadow-xl mt-2 border border-[#962433] rounded-md bg-gradient-to-bl from-sky-200 to-indigo-600">
       <div className="flex-none w-48 relative">
         <Image
           src="/poster.png"
-          alt=""
+          alt="Poster"
           className="absolute inset-0 w-full h-full object-cover rounded-l-md"
           fill
           sizes="(min-width: 75em) 33vw, (min-width: 48em) 50vw, 100vw"

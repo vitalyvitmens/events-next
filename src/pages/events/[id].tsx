@@ -1,4 +1,4 @@
-import { EventDetail } from '@/entities/event'
+import { EventDetail, StyledDiv } from '@/entities/event'
 import { trpc } from '@/shared/api'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
@@ -11,11 +11,12 @@ export default function Event() {
     id: Number(router.query.id),
   })
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading) return <StyledDiv text="Loading..." />
 
-  if (!data) return <div>Event not found</div>
+  if (session.status === 'unauthenticated')
+    return <StyledDiv text="Forbidden" />
 
-  if (session.status === 'unauthenticated') return <div>Forbidden</div>
+  if (!data) return <StyledDiv text="Event not found" />
 
   return <EventDetail {...data} />
 }

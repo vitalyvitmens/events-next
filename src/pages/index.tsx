@@ -3,14 +3,18 @@ import { JoinEventButton } from '@/features/join-event'
 import { trpc } from '@/shared/api'
 
 export default function Home() {
-  const { data } = trpc.event.findMany.useQuery()
+  const { data, refetch } = trpc.event.findMany.useQuery()
   return (
     <ul>
       {data?.map((event) => (
         <li key={event.id}>
           <EventCard
             {...event}
-            action={<JoinEventButton eventId={event.id} />}
+            action={
+              !event.isJoined && (
+                <JoinEventButton eventId={event.id} onSuccess={refetch} />
+              )
+            }
           />
         </li>
       ))}

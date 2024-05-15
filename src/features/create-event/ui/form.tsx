@@ -20,7 +20,7 @@ export const CreateEventForm = ({ onSubmit }: CreateEventFormProps) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="space-y-12">
+      <div className="space-y-12 p-8 font-sans shadow-xl mt-2 border border-[#962433] rounded-md bg-gradient-to-bl from-sky-200 to-indigo-600">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold leading-7 text-gray-900">
             Событие
@@ -64,7 +64,7 @@ export const CreateEventForm = ({ onSubmit }: CreateEventFormProps) => {
                 <textarea
                   id="description"
                   rows={3}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 bg-transparent text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   {...register('description')}
                 />
               </div>
@@ -84,7 +84,7 @@ export const CreateEventForm = ({ onSubmit }: CreateEventFormProps) => {
                 <input
                   id="date"
                   type="date"
-                  className="block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block rounded-md border-0 py-1.5 bg-transparent text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   {...register('date')}
                 />
               </div>
@@ -96,7 +96,7 @@ export const CreateEventForm = ({ onSubmit }: CreateEventFormProps) => {
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button
           type="button"
-          className="text-sm font-semibold leading-6 text-gray-900"
+          className="text-lg font-semibold leading-6 text-red-600"
         >
           Отмена
         </button>

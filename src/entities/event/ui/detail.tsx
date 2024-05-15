@@ -9,7 +9,7 @@ export const EventDetail = ({
   participations,
 }: EventDetailProps) => {
   return (
-    <div>
+    <div className="p-8 font-sans shadow-xl mt-2 border border-[#962433] rounded-md bg-gradient-to-bl from-sky-200 to-indigo-600">
       <div className="px-4 sm:px-0">
         <h3 className="text-base font-semibold leading-7 text-gray-900">
           Информация о событии
