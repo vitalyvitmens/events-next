@@ -1,4 +1,5 @@
-import { AppRouter } from '@/server/routes'
+import type { AppRouter } from '@/server/routes'
+import { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
 import { httpBatchLink } from '@trpc/client'
 import { createTRPCNext } from '@trpc/next'
 import { ssrPrepass } from '@trpc/next/ssrPrepass'
@@ -18,8 +19,8 @@ function getBaseUrl() {
 }
 
 export const trpc = createTRPCNext<AppRouter>({
-  ssr: false,
-  // ssrPrepass,
+  ssr: true,
+  ssrPrepass,
   config(opts) {
     const { ctx } = opts
     if (typeof window !== 'undefined') {
@@ -57,5 +58,8 @@ export const trpc = createTRPCNext<AppRouter>({
   },
   transformer: superjson,
 })
+
+export type RouterInput = inferRouterInputs<AppRouter>
+export type RouterOutput = inferRouterOutputs<AppRouter>
 
 export * from './schema'
