@@ -1,5 +1,4 @@
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
-import { type inferAsyncReturnType } from '@trpc/server'
 import type { CreateNextContextOptions } from '@trpc/server/adapters/next'
 import { getServerSession } from 'next-auth'
 
@@ -11,4 +10,4 @@ export const createContext = async ({ req, res }: CreateNextContextOptions) => {
   }
 }
 
-export type Context = inferAsyncReturnType<typeof createContext>
+export type Context = Awaited<ReturnType<typeof createContext>>
