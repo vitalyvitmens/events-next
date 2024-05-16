@@ -1,6 +1,6 @@
 import { EventCard } from '@/entities/event'
 import { JoinEventButton } from '@/features/join-event'
-import { LeaveEventButtonProps } from '@/features/leave-event'
+import { LeaveEventButton } from '@/features/leave-event'
 import { trpc } from '@/shared/api'
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
               !event.isJoined ? (
                 <JoinEventButton eventId={event.id} onSuccess={refetch} />
               ) : (
-                <LeaveEventButtonProps eventId={event.id} onSuccess={refetch} />
+                <LeaveEventButton eventId={event.id} onSuccess={refetch} />
               )
             }
           />
