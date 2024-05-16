@@ -1,5 +1,5 @@
-import { CreateEventForm, CreateEventValues } from '@/features/create-event'
-import { trpc } from '@/shared/api'
+import { CreateEventForm } from '@/features/create-event'
+import { CreateEventSchema, trpc } from '@/shared/api'
 import { useRouter } from 'next/router'
 
 export default function CreateEvent() {
@@ -11,13 +11,15 @@ export default function CreateEvent() {
     },
   })
 
-  const handleSubmit = (data: CreateEventValues) => {
+  const cancelHandler = () => {
+    router.push(`/`)
+  }
+
+  const handleSubmit = (data: CreateEventSchema) => {
     mutate(data)
   }
 
   return (
-    <div className="py-4">
-      <CreateEventForm onSubmit={handleSubmit} />
-    </div>
+    <CreateEventForm onSubmit={handleSubmit} cancelHandler={cancelHandler} />
   )
 }
