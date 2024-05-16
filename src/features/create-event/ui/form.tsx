@@ -1,21 +1,38 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { CreateEventSchema } from '@/shared/api'
+import { CreateEventSchema, EventDetailProps } from '@/shared/api'
 import { z } from 'zod'
 
 export type CreateEventValues = z.infer<typeof CreateEventSchema>
 
 type CreateEventFormProps = {
-  onSubmit: (data: CreateEventValues) => void
+  onSubmit: (data: CreateEventSchema) => void
+  cancelHandler: () => void
+  isEdit?: boolean
+  data?: EventDetailProps
 }
 
-export const CreateEventForm = ({ onSubmit }: CreateEventFormProps) => {
+export const CreateEventForm = ({
+  onSubmit,
+  cancelHandler,
+  isEdit,
+  data,
+}: CreateEventFormProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<CreateEventValues>({
     resolver: zodResolver(CreateEventSchema),
+    mode: 'onChange',
+    defaultValues: {
+      title: data?.title || '',
+      description: data?.description || '',
+      //@ts-ignore
+      date: data?.date
+        ? new Date(data.date).toISOString().split('T')[0]
+        : new Date().toISOString().split('T')[0],
+    },
   })
 
   return (
@@ -68,9 +85,15 @@ export const CreateEventForm = ({ onSubmit }: CreateEventFormProps) => {
                   {...register('description')}
                 />
               </div>
-              <p className="mt-3 text-sm leading-6 text-gray-600">
-                Напишите несколько предложений о предстоящем мероприятии
-              </p>
+              {errors.description ? (
+                <p className="mt-3 text-sm leading-6 text-red-500">
+                  {errors.description.message}
+                </p>
+              ) : (
+                <p className="mt-3 text-sm leading-6 text-gray-600">
+                  Напишите несколько предложений о предстоящем мероприятии
+                </p>
+              )}
             </div>
 
             <div className="col-span-full">
@@ -88,6 +111,11 @@ export const CreateEventForm = ({ onSubmit }: CreateEventFormProps) => {
                   {...register('date')}
                 />
               </div>
+              {errors.date && (
+                <p className="mt-3 text-sm leading-6 text-red-500">
+                  {errors.date.message}
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -97,6 +125,7 @@ export const CreateEventForm = ({ onSubmit }: CreateEventFormProps) => {
         <button
           type="button"
           className="text-lg font-semibold leading-6 text-red-600"
+          onClick={cancelHandler}
         >
           Отмена
         </button>
@@ -104,7 +133,7 @@ export const CreateEventForm = ({ onSubmit }: CreateEventFormProps) => {
           type="submit"
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
-          Создать
+          {!isEdit ? 'Создать' : 'Обновить'}
         </button>
       </div>
     </form>
