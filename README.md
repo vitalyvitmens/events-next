@@ -45,3 +45,77 @@
 
 ### https://trpc.io/docs/server/context
 ### https://trpc.io/docs/server/middlewares
+
+### Структура проекта:
+
+```
++---entities
+|   \---event
+|       |   index.ts
+|       |
+|       \---ui
+|               card.tsx
+|               detail.tsx
+|               styled-div.tsx
+|
++---features
+|   +---create-event
+|   |   |   index.ts
+|   |   |
+|   |   \---ui
+|   |           form.tsx
+|   |
+|   +---join-event
+|   |   |   index.ts
+|   |   |
+|   |   \---ui
+|   |           button.tsx
+|   |
+|   \---leave-event
+|       |   index.ts
+|       |
+|       \---ui
+|               button.tsx
+|
++---layout
+|       header.tsx
+|       index.ts
+|
++---pages
+|   |   index.tsx
+|   |   _app.tsx
+|   |   _document.tsx
+|   |
+|   +---api
+|   |   +---auth
+|   |   |       next-auth.d.ts
+|   |   |       [...nextauth].ts
+|   |   |
+|   |   \---trpc
+|   |           [trpc].ts
+|   |
+|   \---events
+|       |   create.tsx
+|       |   [id].tsx
+|       |
+|       \---[id]
+|               edit.tsx
+|
++---server
+|   |   context.ts
+|   |   db.ts
+|   |   trpc.ts
+|   |
+|   \---routes
+|           event.ts
+|           index.ts
+|
++---shared
+|   \---api
+|           index.ts
+|           metadata.ts
+|           schema.ts
+|
+\---styles
+        globals.css
+```
