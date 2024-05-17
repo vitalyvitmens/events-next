@@ -7,7 +7,7 @@ import { Header } from '@/layout'
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <div className="mx-auto mt-24 max-w-4xl rounded-md bg-transparent">
+    <div className="mx-auto mt-24 mb-2 max-w-4xl rounded-md bg-transparent">
       <SessionProvider session={pageProps.session}>
         <Header />
         <Component {...pageProps} />
