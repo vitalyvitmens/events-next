@@ -49,73 +49,90 @@
 ### Структура проекта:
 
 ```
-+---entities
-|   \---event
-|       |   index.ts
++---prisma
+|   |   dev.db
+|   |   schema.prisma
+|   |
+|   \---migrations
+|       |   migration_lock.toml
 |       |
-|       \---ui
-|               card.tsx
-|               detail.tsx
-|               styled-div.tsx
+|       \---20240513101227_init
+|               migration.sql
 |
-+---features
-|   +---create-event
-|   |   |   index.ts
-|   |   |
-|   |   \---ui
-|   |           form.tsx
-|   |
-|   +---join-event
-|   |   |   index.ts
-|   |   |
-|   |   \---ui
-|   |           button.tsx
-|   |
-|   \---leave-event
-|       |   index.ts
-|       |
-|       \---ui
-|               button.tsx
++---public
+|       bgImage.jpg
+|       favicon.png
+|       poster.png
+|       rs.svg
 |
-+---layout
-|       header.tsx
-|       index.ts
-|
-+---pages
-|   |   index.tsx
-|   |   _app.tsx
-|   |   _document.tsx
-|   |
-|   +---api
-|   |   +---auth
-|   |   |       next-auth.d.ts
-|   |   |       [...nextauth].ts
-|   |   |
-|   |   \---trpc
-|   |           [trpc].ts
-|   |
-|   \---events
-|       |   create.tsx
-|       |   [id].tsx
-|       |
-|       \---[id]
-|               edit.tsx
-|
-+---server
-|   |   context.ts
-|   |   db.ts
-|   |   trpc.ts
-|   |
-|   \---routes
-|           event.ts
-|           index.ts
-|
-+---shared
-|   \---api
-|           index.ts
-|           metadata.ts
-|           schema.ts
-|
-\---styles
-        globals.css
+\---src
+    +---entities
+    |   \---event
+    |       |   index.ts
+    |       |
+    |       \---ui
+    |               card.tsx
+    |               detail.tsx
+    |               styled-div.tsx
+    |
+    +---features
+    |   +---create-event
+    |   |   |   index.ts
+    |   |   |
+    |   |   \---ui
+    |   |           form.tsx
+    |   |
+    |   +---join-event
+    |   |   |   index.ts
+    |   |   |
+    |   |   \---ui
+    |   |           button.tsx
+    |   |
+    |   \---leave-event
+    |       |   index.ts
+    |       |
+    |       \---ui
+    |               button.tsx
+    |
+    +---layout
+    |       header.tsx
+    |       index.ts
+    |
+    +---pages
+    |   |   index.tsx
+    |   |   _app.tsx
+    |   |   _document.tsx
+    |   |
+    |   +---api
+    |   |   +---auth
+    |   |   |       next-auth.d.ts
+    |   |   |       [...nextauth].ts
+    |   |   |
+    |   |   \---trpc
+    |   |           [trpc].ts
+    |   |
+    |   \---events
+    |       |   create.tsx
+    |       |   [id].tsx
+    |       |
+    |       \---[id]
+    |               edit.tsx
+    |
+    +---server
+    |   |   context.ts
+    |   |   db.ts
+    |   |   trpc.ts
+    |   |
+    |   \---routes
+    |           event.ts
+    |           index.ts
+    |
+    +---shared
+    |   \---api
+    |           index.ts
+    |           metadata.ts
+    |           schema.ts
+    |
+    \---styles
+            globals.css
 ```
