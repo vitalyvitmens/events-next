@@ -55,7 +55,7 @@ export default async function signup(
       message: 'Пользователь успешно создан',
       redirectUrl: `${req.headers.origin}/api/auth/signin`,
     })
-    res.redirect(`${req.headers.origin}/`)
+    // res.redirect(`${req.headers.origin}/`)
   } catch (error) {
     console.error('Ошибка при регистрации:', error)
     res.status(500).json({ message: 'Ошибка на сервере' })
