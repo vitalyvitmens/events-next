@@ -38,6 +38,12 @@ export const authOptions: NextAuthOptions = {
       session.user.id = Number(token.sub)
       return session
     },
+    redirect: async ({ url, baseUrl }) => {
+      if (url.startsWith(baseUrl)) {
+        return baseUrl
+      }
+      return baseUrl + '/auth/signin'
+    },
   },
 }
 

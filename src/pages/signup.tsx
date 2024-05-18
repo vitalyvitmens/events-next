@@ -38,7 +38,6 @@ const SignupPage = () => {
       })
 
       if (response.ok) {
-        const result = await response.json()
         const signInResponse = await signIn('credentials', {
           redirect: false,
           email: data.email,
