@@ -21,9 +21,13 @@ export const Header = () => {
         </Link>
       </div>
       {status === 'unauthenticated' ? (
-        <div className="flex gap-10">
-          <Link href="/api/auth/signin">Войти</Link>
-          <Link href="/signup">Регистрация</Link>
+        <div className="flex gap-10 text-lg items-center font-bold">
+          <Link className="text-green-900" href="/api/auth/signin">
+            Войти
+          </Link>
+          <Link className="text-blue-900" href="/signup">
+            Регистрация
+          </Link>
         </div>
       ) : (
         <>
