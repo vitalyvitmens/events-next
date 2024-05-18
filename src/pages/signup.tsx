@@ -39,9 +39,8 @@ const SignupPage = () => {
 
       if (response.ok) {
         const result = await response.json()
-        // Попытка автоматического входа после регистрации
         const signInResponse = await signIn('credentials', {
-          redirect: false, // Отключаем автоматическое перенаправление
+          redirect: false,
           email: data.email,
           password: data.password,
         })
@@ -52,19 +51,24 @@ const SignupPage = () => {
           setPassword('')
           setConfirmPassword('')
 
-          // Перенаправление на главную страницу после успешного входа
           router.push('/')
         } else {
           setErrorMessage('Не удалось выполнить вход.')
         }
       } else {
-        // Обработка ошибок регистрации
         setErrorMessage('Произошла ошибка при регистрации.')
       }
     } catch (error) {
-      setErrorMessage('Произошла ошибка при регистрации.')
+      console.error('Ошибка выполнения запроса:', error)
+
+      if (error instanceof Error) {
+        setErrorMessage(`Ошибка: ${error.message}`)
+      } else {
+        setErrorMessage('Неизвестная ошибка при регистрации.')
+      }
     }
   }
+
   return (
     <form
       className="mx-auto w-[300px] p-8 bg-gray-50 dark:bg-gray-900 rounded-xl"
@@ -79,6 +83,7 @@ const SignupPage = () => {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          autoComplete="name"
           required
         />
       </div>
@@ -91,6 +96,7 @@ const SignupPage = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="email"
           required
         />
       </div>
