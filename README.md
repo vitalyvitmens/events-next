@@ -76,6 +76,9 @@
     |               styled-div.tsx
     |
     +---features
+    |   +---auth
+    |   |       auth.constants.ts
+    |   |
     |   +---create-event
     |   |   |   index.ts
     |   |   |
@@ -99,13 +102,16 @@
     |       index.ts
     |
     +---pages
+    |   |   404.tsx
     |   |   index.tsx
+    |   |   signup.tsx
     |   |   _app.tsx
     |   |   _document.tsx
     |   |
     |   +---api
     |   |   +---auth
     |   |   |       next-auth.d.ts
+    |   |   |       signup.ts
     |   |   |       [...nextauth].ts
     |   |   |
     |   |   \---trpc
@@ -128,10 +134,15 @@
     |           index.ts
     |
     +---shared
-    |   \---api
-    |           index.ts
-    |           metadata.ts
-    |           schema.ts
+    |   |   constants.ts
+    |   |
+    |   +---api
+    |   |       index.ts
+    |   |       metadata.ts
+    |   |       schema.ts
+    |   |
+    |   \---utils
+    |           auth.ts
     |
     \---styles
             globals.css
