@@ -21,12 +21,10 @@ export const Header = () => {
         </Link>
       </div>
       {status === 'unauthenticated' ? (
-        <Link
-          className="h-10 px-6 font-semibold rounded-md bg-green-500 text-white align-middle leading-10"
-          href="/api/auth/signin"
-        >
-          Войти
-        </Link>
+        <div className="flex gap-10">
+          <Link href="/api/auth/signin">Войти</Link>
+          <Link href="/signup">Регистрация</Link>
+        </div>
       ) : (
         <>
           <div className="h-10 px-2 font-semibold text-gray-300 align-middle leading-10">
