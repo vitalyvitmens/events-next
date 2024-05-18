@@ -7,7 +7,7 @@ export const Header = () => {
   const { data: session, status } = useSession()
 
   return (
-    <div className="fixed w-full top-0 left-0 bg-gradient-to-bl from-sky-200/90 to-indigo-600/90 z-50 flex justify-around text-sm py-6 border-b border-[#962433]">
+    <div className="fixed h-[88px] w-full top-0 left-0 bg-gradient-to-bl from-sky-200/90 to-indigo-600/90 z-50 flex justify-around text-sm py-6 border-b border-[#962433]">
       <div className="flex-none w-44 relative image-container">
         <Link href="/" className="absolute inset-0">
           <Image
