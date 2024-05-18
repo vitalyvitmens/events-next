@@ -2,6 +2,7 @@ import { prisma } from '@/server/db'
 import { hashPassword } from '@/shared/utils/auth'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { createContext } from '@/server/context'
+import { AUTH_MESSAGES, AUTH_ROUTES } from '@/features/auth/auth.constants'
 
 export default async function signup(
   req: NextApiRequest,
@@ -20,7 +21,7 @@ export default async function signup(
   const session = context.user
 
   if (session) {
-    res.status(400).json({ message: 'Пользователь уже вошел в систему' })
+    res.status(400).json({ message: AUTH_MESSAGES.UserAlreadyLoggedIn })
     return
   }
 
@@ -31,13 +32,13 @@ export default async function signup(
   })
 
   if (existingUser) {
-    res.status(400).json({ message: 'Пользователь уже существует' })
+    res.status(400).json({ message: AUTH_MESSAGES.UserAlreadyExists })
     return
   }
 
   try {
     const hashedPassword = await hashPassword(password)
-    const user = await prisma.user.create({
+    await prisma.user.create({
       data: {
         name,
         email,
@@ -46,11 +47,11 @@ export default async function signup(
     })
 
     res.status(201).json({
-      message: 'Пользователь успешно создан',
-      redirectUrl: `${req.headers.origin}/api/auth/signin`,
+      message: AUTH_MESSAGES.UserCreated,
+      redirectUrl: req.headers.origin + AUTH_ROUTES.SignIn,
     })
   } catch (error) {
-    console.error('Ошибка при регистрации:', error)
-    res.status(500).json({ message: 'Ошибка на сервере' })
+    console.error(AUTH_MESSAGES.SignUpError, error)
+    res.status(500).json({ message: AUTH_MESSAGES.ServerError })
   }
 }

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import { signIn } from 'next-auth/react'
+import { AUTH_MESSAGES, AUTH_ROUTES } from '@/features/auth/auth.constants'
+import { SHARED_ROUTES } from '@/shared/constants'
 
 const SignupPage = () => {
   const router = useRouter()
@@ -18,7 +20,7 @@ const SignupPage = () => {
     }
 
     if (password !== confirmPassword) {
-      setErrorMessage('Пароли не совпадают.')
+      setErrorMessage(AUTH_MESSAGES.PasswordsDoNotMatch)
       return
     }
 
@@ -29,7 +31,7 @@ const SignupPage = () => {
     }
 
     try {
-      const response = await fetch('/api/auth/signup', {
+      const response = await fetch(AUTH_ROUTES.SignUp, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,20 +52,20 @@ const SignupPage = () => {
           setPassword('')
           setConfirmPassword('')
 
-          router.push('/')
+          router.push(SHARED_ROUTES.Home)
         } else {
-          setErrorMessage('Не удалось выполнить вход.')
+          setErrorMessage(AUTH_MESSAGES.SignInError)
         }
       } else {
-        setErrorMessage('Произошла ошибка при регистрации.')
+        setErrorMessage(AUTH_MESSAGES.SignUpError)
       }
     } catch (error) {
-      console.error('Ошибка выполнения запроса:', error)
+      console.error(AUTH_MESSAGES.RequestExecutionError, error)
 
       if (error instanceof Error) {
-        setErrorMessage(`Ошибка: ${error.message}`)
+        setErrorMessage(AUTH_MESSAGES.ErrorMessage + error.message)
       } else {
-        setErrorMessage('Неизвестная ошибка при регистрации.')
+        setErrorMessage(AUTH_MESSAGES.UnknownSignUpError)
       }
     }
   }
