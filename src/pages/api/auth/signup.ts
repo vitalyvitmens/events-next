@@ -7,23 +7,19 @@ export default async function signup(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // Обновляем свойство info, чтобы оно соответствовало типу TRPCRequestInfo
   const contextOptions = {
     req,
     res,
     info: {
-      isBatchCall: false, // Пример значения, вам нужно будет установить правильное значение
-      calls: [], // Пример значения, вам нужно будет установить правильное значение
+      isBatchCall: false,
+      calls: [],
     },
   }
 
-  // Вызываем createContext с обновленным объектом contextOptions
   const context = await createContext(contextOptions)
   const session = context.user
 
-  // Проверяем, есть ли сессия пользователя
   if (session) {
-    // Пользователь уже вошел в систему
     res.status(400).json({ message: 'Пользователь уже вошел в систему' })
     return
   }
@@ -49,13 +45,10 @@ export default async function signup(
       },
     })
 
-// Отправляем JSON-ответ с сообщением об успешной регистрации
-// и URL для перенаправления
     res.status(201).json({
       message: 'Пользователь успешно создан',
       redirectUrl: `${req.headers.origin}/api/auth/signin`,
     })
-    // res.redirect(`${req.headers.origin}/`)
   } catch (error) {
     console.error('Ошибка при регистрации:', error)
     res.status(500).json({ message: 'Ошибка на сервере' })

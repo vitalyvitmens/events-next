@@ -9,7 +9,6 @@ const SignupPage = () => {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
 
-  // Функция для обработки формы регистрации
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const target = event.target as typeof event.target & {
@@ -29,7 +28,6 @@ const SignupPage = () => {
     }
 
     try {
-      // Отправка данных на API для регистрации
       const response = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: {
@@ -40,7 +38,6 @@ const SignupPage = () => {
 
       if (response.ok) {
         const result = await response.json()
-        // Перенаправление на URL, полученный из ответа сервера
         if (result.redirectUrl) {
           router.push(result.redirectUrl)
         }
@@ -50,7 +47,6 @@ const SignupPage = () => {
         setPassword('')
         setConfirmPassword('')
       } else {
-        // Проверка на тип содержимого ответа
         const contentType = response.headers.get('content-type')
         if (contentType && contentType.includes('application/json')) {
           const result = await response.json()
