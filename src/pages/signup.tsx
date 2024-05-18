@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import { signIn } from 'next-auth/react'
 
 const SignupPage = () => {
   const router = useRouter()
@@ -38,29 +39,32 @@ const SignupPage = () => {
 
       if (response.ok) {
         const result = await response.json()
-        if (result.redirectUrl) {
-          router.push(result.redirectUrl)
-        }
+        // Попытка автоматического входа после регистрации
+        const signInResponse = await signIn('credentials', {
+          redirect: false, // Отключаем автоматическое перенаправление
+          email: data.email,
+          password: data.password,
+        })
 
-        setEmail('')
-        setName('')
-        setPassword('')
-        setConfirmPassword('')
-      } else {
-        const contentType = response.headers.get('content-type')
-        if (contentType && contentType.includes('application/json')) {
-          const result = await response.json()
-          setErrorMessage(result.message || 'Произошла ошибка при регистрации')
+        if (signInResponse?.ok) {
+          setEmail('')
+          setName('')
+          setPassword('')
+          setConfirmPassword('')
+
+          // Перенаправление на главную страницу после успешного входа
+          router.push('/')
         } else {
-          setErrorMessage('Произошла ошибка на сервере.')
+          setErrorMessage('Не удалось выполнить вход.')
         }
+      } else {
+        // Обработка ошибок регистрации
+        setErrorMessage('Произошла ошибка при регистрации.')
       }
     } catch (error) {
-      console.error('Ошибка выполнения запроса:', error)
-      setErrorMessage('Не удалось выполнить запрос.')
+      setErrorMessage('Произошла ошибка при регистрации.')
     }
   }
-
   return (
     <form
       className="mx-auto w-[300px] p-8 bg-gray-50 dark:bg-gray-900 rounded-xl"
