@@ -64,6 +64,7 @@
 |       favicon.png
 |       poster.png
 |       rs.svg
+|       to-up.svg
 |
 \---src
     +---entities
@@ -98,6 +99,7 @@
     |               button.tsx
     |
     +---layout
+    |       footer.tsx
     |       header.tsx
     |       index.ts
     |
@@ -143,7 +145,9 @@
     |   |
     |   \---utils
     |           auth.ts
+    |           scroll.ts
     |
     \---styles
             globals.css
+
 ```
