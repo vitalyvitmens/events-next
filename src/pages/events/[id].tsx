@@ -25,7 +25,7 @@ export default function Event() {
       {data?.authorId === session.data?.user.id && (
         <div className="flex justify-end">
           <Link
-            className="h-10 mt-6 px-6 font-semibold rounded-md bg-indigo-500 text-white align-middle leading-10"
+            className="h-10 mt-2 px-6 font-semibold rounded-md bg-indigo-500 text-white align-middle leading-10"
             href={`/events/${router.query.id}/edit`}
           >
             Редактировать

@@ -121,7 +121,7 @@ export const CreateEventForm = ({
         </div>
       </div>
 
-      <div className="mt-6 flex items-center justify-end gap-x-6">
+      <div className="mt-2 flex items-center justify-end gap-x-6">
         <button
           type="button"
           className="text-lg font-semibold leading-6 text-red-600"

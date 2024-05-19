@@ -72,7 +72,7 @@ const SignupPage = () => {
 
   return (
     <form
-      className="mx-auto w-[300px] p-8 bg-gray-50 dark:bg-gray-900 rounded-xl"
+      className="m-auto w-[300px] p-8 bg-gray-50 dark:bg-gray-900 rounded-xl"
       onSubmit={handleSubmit}
     >
       <div className="mb-2">
