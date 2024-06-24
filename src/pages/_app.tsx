@@ -3,12 +3,15 @@ import { trpc } from '@/shared/api'
 import '@/styles/globals.css'
 import { getSession, SessionProvider } from 'next-auth/react'
 import { NextPageContext } from 'next'
+import { Footer, Header } from '@/layout'
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <div className="mx-auto max-w-4xl rounded-md bg-transparent">
+    <div className="flex flex-col min-h-screen-minus-footer mx-auto mt-[88px] max-w-4xl rounded-md bg-transparent">
       <SessionProvider session={pageProps.session}>
+        <Header />
         <Component {...pageProps} />
+        <Footer />
       </SessionProvider>
     </div>
   )

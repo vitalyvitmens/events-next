@@ -20,4 +20,4 @@ export const JoinEventSchema = z.object({
   id: z.number().int().positive(),
 })
 
-export type EventDetailProps = NonNullable<RouterOutput['event']>
+export type EventDetailProps = NonNullable<RouterOutput['event']["findUnique"]>

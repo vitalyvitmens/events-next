@@ -45,3 +45,109 @@
 
 ### https://trpc.io/docs/server/context
 ### https://trpc.io/docs/server/middlewares
+
+### Структура проекта:
+
+```
++---prisma
+|   |   dev.db
+|   |   schema.prisma
+|   |
+|   \---migrations
+|       |   migration_lock.toml
+|       |
+|       \---20240513101227_init
+|               migration.sql
+|
++---public
+|       bgImage.jpg
+|       favicon.png
+|       poster.png
+|       rs.svg
+|       to-up.svg
+|
+\---src
+    +---entities
+    |   \---event
+    |       |   index.ts
+    |       |
+    |       \---ui
+    |               card.tsx
+    |               detail.tsx
+    |               styled-div.tsx
+    |
+    +---features
+    |   +---auth
+    |   |       auth.constants.ts
+    |   |
+    |   +---create-event
+    |   |   |   index.ts
+    |   |   |
+    |   |   \---ui
+    |   |           form.tsx
+    |   |
+    |   +---join-event
+    |   |   |   index.ts
+    |   |   |
+    |   |   \---ui
+    |   |           button.tsx
+    |   |
+    |   \---leave-event
+    |       |   index.ts
+    |       |
+    |       \---ui
+    |               button.tsx
+    |
+    +---layout
+    |       footer.tsx
+    |       header.tsx
+    |       index.ts
+    |
+    +---pages
+    |   |   404.tsx
+    |   |   index.tsx
+    |   |   signup.tsx
+    |   |   _app.tsx
+    |   |   _document.tsx
+    |   |
+    |   +---api
+    |   |   +---auth
+    |   |   |       next-auth.d.ts
+    |   |   |       signup.ts
+    |   |   |       [...nextauth].ts
+    |   |   |
+    |   |   \---trpc
+    |   |           [trpc].ts
+    |   |
+    |   \---events
+    |       |   create.tsx
+    |       |   [id].tsx
+    |       |
+    |       \---[id]
+    |               edit.tsx
+    |
+    +---server
+    |   |   context.ts
+    |   |   db.ts
+    |   |   trpc.ts
+    |   |
+    |   \---routes
+    |           event.ts
+    |           index.ts
+    |
+    +---shared
+    |   |   constants.ts
+    |   |
+    |   +---api
+    |   |       index.ts
+    |   |       metadata.ts
+    |   |       schema.ts
+    |   |
+    |   \---utils
+    |           auth.ts
+    |           scroll.ts
+    |
+    \---styles
+            globals.css
+
+```
