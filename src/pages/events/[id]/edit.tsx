@@ -13,7 +13,7 @@ export default function EditEvent() {
 
   const { mutate } = trpc.event.update.useMutation({
     onSuccess: () => {
-      router.push(`/events/${router.query.id}`)
+      router.replace(`/events/${router.query.id}`)
     },
   })
 
@@ -25,7 +25,7 @@ export default function EditEvent() {
   }
 
   const cancelHandler = () => {
-    router.push(`/events/${router.query.id}`)
+    router.replace(`/events/${router.query.id}`)
   }
 
   if (isLoading) return <StyledDiv text="Loading..." />

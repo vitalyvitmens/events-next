@@ -7,12 +7,12 @@ export default function CreateEvent() {
 
   const { mutate } = trpc.event.create.useMutation({
     onSuccess: (data) => {
-      router.push(`/events/${data.id}`)
+      router.replace(`/events/${data.id}`)
     },
   })
 
   const cancelHandler = () => {
-    router.push(`/`)
+    router.replace(`/`)
   }
 
   const handleSubmit = (data: CreateEventSchema) => {

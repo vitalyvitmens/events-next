@@ -52,7 +52,7 @@ const SignupPage = () => {
           setPassword('')
           setConfirmPassword('')
 
-          router.push(SHARED_ROUTES.Home)
+          router.replace(SHARED_ROUTES.Home)
         } else {
           setErrorMessage(AUTH_MESSAGES.SignInError)
         }

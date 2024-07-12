@@ -11,6 +11,9 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d out -r git@github.com:vitalyvitmens/events-next.git"
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "@prisma/client": "5.13.0",
