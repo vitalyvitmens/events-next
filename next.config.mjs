@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-  exportPathMap: async function ({ dev, dir, outDir, distDir, buildId }) {
+  output: 'export',
+  exportPathMap: async function () {
     return {
       '/': { page: '/' },
       '/404': { page: '/404' },
@@ -14,3 +15,5 @@ const nextConfig = {
     }
   },
 }
+
+export default nextConfig
