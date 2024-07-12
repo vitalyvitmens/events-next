@@ -17,7 +17,7 @@ function App({ Component, pageProps }: AppProps) {
   )
 }
 
-App.getStaticProps = async (context: { ctx: NextPageContext }) => {
+App.getInitialProps = async (context: { ctx: NextPageContext }) => {
   const session = await getSession({ req: context.ctx.req })
 
   return {
