@@ -23,6 +23,11 @@ jobs:
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           NEXT_PUBLIC_WEATHER_API_KEY: ${{ secrets.NEXT_PUBLIC_WEATHER_API_KEY }}
 
+      - name: Configure Git
+        run: |
+          git config --global user.email 'otm_@tut.by'
+          git config --global user.name 'vitalyvitmens'
+
       - name: Deploy to GitHub Pages
         run: npm run deploy
         env:
