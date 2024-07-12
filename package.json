@@ -2,7 +2,7 @@
   "name": "events-next",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://events-next.vercel.app/",
+  "homepage": "https://vitalyvitmens.github.io/events-next/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
