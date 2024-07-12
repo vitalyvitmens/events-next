@@ -7,7 +7,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/events-next',
   exportPathMap: async function () {
     return {
       '/': { page: '/' },
