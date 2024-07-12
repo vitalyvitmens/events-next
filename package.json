@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build",
-    "deploy": "git config --global user.email 'otm_@tut.by' && git config --global user.name 'vitalyvitmens' && gh-pages -d out"
+    "deploy": "git config --global user.email 'otm_@tut.by' && git config --global user.name 'vitalyvitmens' && gh-pages -d out -r https://$TOKEN@github.com/vitalyvitmens/events-next.git"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
